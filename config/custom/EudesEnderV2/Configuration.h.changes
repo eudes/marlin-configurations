@@ -1,0 +1,55 @@
+#define MACHINE_SIZE "230x230x250"
+#define CORP_WEBSITE_E "call your mama"
+#define STRING_CONFIG_H_AUTHOR "eudes" // Who made the changes.
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 98.2 }
+#define S_CURVE_ACCELERATION
+//#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+#define USE_PROBE_FOR_Z_HOMING
+#define BLTOUCH
+
+/**
+ * Nozzle-to-Probe offsets { X, Y, Z }
+ *
+ * - Use a caliper or ruler to measure the distance from the tip of
+ *   the Nozzle to the center-point of the Probe in the X and Y axes.
+ * - For the Z offset use your best known value and adjust at runtime.
+ * - Probe Offsets can be tuned at runtime with 'M851', LCD menus, babystepping, etc.
+ *
+ * Assuming the typical work area orientation:
+ *  - Probe to RIGHT of the Nozzle has a Positive X offset
+ *  - Probe to LEFT  of the Nozzle has a Negative X offset
+ *  - Probe in BACK  of the Nozzle has a Positive Y offset
+ *  - Probe in FRONT of the Nozzle has a Negative Y offset
+ *
+ * Some examples:
+ *   #define NOZZLE_TO_PROBE_OFFSET { 10, 10, -1 }   // Example "1"
+ *   #define NOZZLE_TO_PROBE_OFFSET {-10,  5, -1 }   // Example "2"
+ *   #define NOZZLE_TO_PROBE_OFFSET {  5, -5, -1 }   // Example "3"
+ *   #define NOZZLE_TO_PROBE_OFFSET {-15,-10, -1 }   // Example "4"
+ *
+ *     +-- BACK ---+
+ *     |    [+]    |
+ *   L |        1  | R <-- Example "1" (right+,  back+)
+ *   E |  2        | I <-- Example "2" ( left-,  back+)
+ *   F |[-]  N  [+]| G <-- Nozzle
+ *   T |       3   | H <-- Example "3" (right+, front-)
+ *     | 4         | T <-- Example "4" ( left-, front-)
+ *     |    [-]    |
+ *     O-- FRONT --+
+ */
+#define NOZZLE_TO_PROBE_OFFSET { -42, -5, -2.85 }
+#define XY_PROBE_SPEED (120*60)
+#define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
+#define X_BED_SIZE 230
+#define Y_BED_SIZE 230
+
+//#define AUTO_BED_LEVELING_BILINEAR
+#define AUTO_BED_LEVELING_UBL
+//#define MESH_BED_LEVELING
+#define RESTORE_LEVELING_AFTER_G28
+
+  #define G26_MESH_VALIDATION
+  #define GRID_MAX_POINTS_X 6
+
+#define Z_SAFE_HOMING
+#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (6*60) }
